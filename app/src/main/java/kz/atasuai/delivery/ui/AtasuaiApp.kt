@@ -17,6 +17,7 @@ import kz.atasuai.delivery.common.JsonHelper
 import kz.atasuai.delivery.common.ThemeManager
 import kz.atasuai.delivery.common.TokenHelper
 import kz.atasuai.delivery.common.Translator
+import kz.atasuai.delivery.datastore.OnlineMode
 import kz.atasuai.market.models.LanguageModel
 import kz.atasuai.market.models.global.OrderUiState
 import kz.atasuai.market.models.global.PersonModel
@@ -150,6 +151,7 @@ class AtasuaiApp: Application(){
             prefs.edit().putString(CITY_LOCAL_KEY, value).apply()
         }
 
+
         private inline fun <reified T> getPreference(key: String, defaultValue: T? = null): T? {
             return when (T::class) {
                 String::class -> prefs.getString(key, defaultValue as? String) as T?
@@ -182,6 +184,7 @@ class AtasuaiApp: Application(){
 
     override fun onCreate() {
         super.onCreate()
+        OnlineMode.initialize(this)
         appContext = applicationContext
         prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         siteUrl = "https://pos.3100.kz/api"

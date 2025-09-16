@@ -82,7 +82,7 @@ class LoginActivity:ComponentActivity(){
                     applySystemBarsPadding = false,
                     statusBarDarkIcons = true,
                     navigationBarDarkIcons = true,
-                    navigationBarColor = AtasuaiTheme.colors.background
+                    navigationBarColor = AtasuaiTheme.colors.welcomeBac
                 ) { screenModifier ->
                     LoginScreen(viewModel,verificationViewModel,regisViewModel,languageView,currentLanguage,context,modifier = screenModifier,phone)
                 }
@@ -113,7 +113,7 @@ fun LoginScreen(viewModel: LoginViewModel, verificationViewModel:VerificationVie
         )
     }
     Column(modifier=modifier.fillMaxSize()
-        .background(AtasuaiTheme.colors.background)
+        .background(AtasuaiTheme.colors.welcomeBac)
         .navigationBarsPadding()
         .imePadding()
         .padding(horizontal = 20.dp)
@@ -150,11 +150,10 @@ fun LoginScreen(viewModel: LoginViewModel, verificationViewModel:VerificationVie
                 ActivityTitle(text = currentLanguage.shortName, fontSize = 14f, fontWeight = 400)
                 VSpacerWi(4f)
                 Icon(
-                    painter = painterResource(id = R.drawable.app_dark_logo),
+                    painter = painterResource(id = R.drawable.drop_icon),
                     contentDescription = "arrow down",
                     tint = Color(0xFF181D27),
-                    modifier = Modifier.size(11.dp)
-
+                    modifier = Modifier.size(8.dp).padding(top = 2.5.dp)
                 )
             }
         }

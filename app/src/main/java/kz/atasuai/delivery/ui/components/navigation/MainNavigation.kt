@@ -24,7 +24,19 @@ import androidx.navigation.compose.rememberNavController
 import kz.atasuai.delivery.common.ConnectivityObserver
 import kz.atasuai.delivery.common.ConnectivityStatus
 import kz.atasuai.delivery.ui.AtasuaiApp
+import kz.atasuai.delivery.ui.components.global.NoInternetPage
+import kz.atasuai.delivery.ui.screens.HomeScreen
+import kz.atasuai.delivery.ui.screens.NotificationScreen
+import kz.atasuai.delivery.ui.screens.OrderScreen
+import kz.atasuai.delivery.ui.screens.ProfileScreen
+import kz.atasuai.delivery.ui.screens.ShowQRScreen
+import kz.atasuai.delivery.ui.theme.navigationBarsPadding
 import kz.atasuai.delivery.ui.viewmodels.QarBaseViewModel
+import kz.atasuai.delivery.ui.viewmodels.home.HomeScreenViewModel
+import kz.atasuai.delivery.ui.viewmodels.notification.NotificationViewModel
+import kz.atasuai.delivery.ui.viewmodels.order.OrderViewModel
+import kz.atasuai.delivery.ui.viewmodels.profile.ProfileViewModel
+import kz.atasuai.delivery.ui.viewmodels.qr.QRScreenViewModel
 
 
 @Composable
@@ -39,9 +51,10 @@ fun MainNavigation(
     val status by connectivityObserver.status.collectAsState(initial = ConnectivityStatus.Available)
     val currentLanguage by AtasuaiApp.currentLanguage.collectAsState()
     val viewModel: HomeScreenViewModel = viewModel()
-    val shopViewModel: ShopViewModel = viewModel()
-    val bonusViewModel: BonusViewModel = viewModel()
-    val profileViewModel: MenuViewModel = viewModel()
+    val reportViewModel: NotificationViewModel = viewModel()
+    val orderViewModel: OrderViewModel = viewModel()
+    val profileViewModel: ProfileViewModel = viewModel()
+    val qrViewModel: QRScreenViewModel = viewModel()
 
     val startRoute = qarBaseViewModel.currentRoute.value.takeIf { it.isNotEmpty() } ?: "home"
 
@@ -83,17 +96,20 @@ fun MainNavigation(
                 when (status) {
                     ConnectivityStatus.Available -> {
                         composable("home") {
-                            val notificationViewModel: NotificationViewModel = viewModel()
-                            HomeScreen(context, darkTheme, viewModel, notificationViewModel, currentLanguage)
+                            HomeScreen(context, darkTheme, viewModel, currentLanguage)
                         }
-                        composable("shop") {
-                            ShopScreen(context, darkTheme, shopViewModel, currentLanguage)
+                        composable("order") {
+                            OrderScreen(context, darkTheme, orderViewModel, currentLanguage)
                         }
-                        composable("bonus") {
-                            BonusScreen(context, darkTheme, bonusViewModel, currentLanguage)
+                        composable("notification") {
+                            NotificationScreen(context, darkTheme, reportViewModel, currentLanguage)
                         }
-                        composable("menu") {
-                            MenuScreen(context, darkTheme, profileViewModel, currentLanguage)
+
+                        composable("profile") {
+                            ProfileScreen(context, darkTheme, profileViewModel, currentLanguage)
+                        }
+                        composable("qrScreen"){
+                            ShowQRScreen(context, darkTheme, qrViewModel, currentLanguage)
                         }
                     }
                     ConnectivityStatus.Unavailable -> {
@@ -101,6 +117,7 @@ fun MainNavigation(
                         composable("shop") { NoInternetPage() }
                         composable("bonus") { NoInternetPage() }
                         composable("menu") { NoInternetPage() }
+                        composable("qrScreen") { NoInternetPage() }
                     }
                 }
             }

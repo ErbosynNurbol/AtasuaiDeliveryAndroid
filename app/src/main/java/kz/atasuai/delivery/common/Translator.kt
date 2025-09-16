@@ -5,8 +5,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kz.atasuai.delivery.ui.AtasuaiApp
-import kz.atasuai.market.common.JsonHelper
-import kz.atasuai.market.common.LanguagePackHelper
 import kz.atasuai.market.models.LanguageModel
 import java.util.concurrent.ConcurrentHashMap
 

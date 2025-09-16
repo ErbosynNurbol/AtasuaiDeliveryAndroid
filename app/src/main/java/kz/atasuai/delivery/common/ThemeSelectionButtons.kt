@@ -28,8 +28,6 @@ import androidx.compose.ui.unit.sp
 import kz.atasuai.delivery.common.Translator.T
 import kz.atasuai.delivery.ui.theme.AtasuaiTheme
 import kz.atasuai.delivery.ui.theme.PrimaryFontFamily
-import kz.atasuai.market.common.ThemeManager
-import kz.atasuai.market.common.ThemeMode
 import kz.atasuai.market.models.LanguageModel
 
 

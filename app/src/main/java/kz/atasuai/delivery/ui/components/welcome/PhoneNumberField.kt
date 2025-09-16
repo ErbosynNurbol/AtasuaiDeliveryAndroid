@@ -1,14 +1,19 @@
 package kz.atasuai.market.ui.components.welcome
 
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.selection.TextSelectionColors
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
@@ -41,13 +46,19 @@ fun PhoneNumberField(
     LaunchedEffect(phoneNumber) {
         phoneNumberState = phoneNumber
     }
+    val textStyle = TextStyle(
+        fontSize = responsiveFontSize(14f),
+        lineHeight = responsiveFontSize(14f),
+        fontFamily = PrimaryFontFamily,
+        fontWeight = FontWeight(500),
+        color = AtasuaiTheme.colors.textPrimary,
+    )
     TextField(
         value = phoneNumberState,
         onValueChange = { input ->
             phoneNumberState = input.filter { it.isDigit() }.take(10)
             onPhoneNumberChange(phoneNumberState)
         },
-
         placeholder = {
             Text(
                 text = placeholderText,
@@ -60,15 +71,9 @@ fun PhoneNumberField(
                 )
             )
         },
-        textStyle = TextStyle(
-            fontSize = responsiveFontSize(14f),
-            lineHeight = responsiveFontSize(14f),
-            fontFamily = PrimaryFontFamily,
-            fontWeight = FontWeight(500),
-            color = AtasuaiTheme.colors.textPrimary,
-        ),
+        textStyle = textStyle,
         modifier = Modifier
-            .border(width = 1.dp, color = if(confirmError) Color(0xFFF03024)  else Color(0xFFE8EBF1),shape = RoundedCornerShape(10.dp))
+            .border(width = 1.dp, color = if(confirmError) Color(0xFFF03024)  else AtasuaiTheme.colors.cardBorderCo,shape = RoundedCornerShape(10.dp))
             .fillMaxWidth()
             .height(responsiveWidth(50f)),
         shape = RoundedCornerShape(10.dp),

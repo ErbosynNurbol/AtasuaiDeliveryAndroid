@@ -81,6 +81,7 @@ data class AtasuaiCustomColors(
     val surfaceCustom: Color,
     val placeholderCo: Color,
     val cardBorderCo: Color,
+    val welcomeBac:Color
 )
 
 val LocalAtasuaiColors = staticCompositionLocalOf {
@@ -97,7 +98,8 @@ val LocalAtasuaiColors = staticCompositionLocalOf {
         backgroundCustom = Color.Unspecified,
         surfaceCustom = Color.Unspecified,
         placeholderCo= Color.Unspecified,
-        cardBorderCo= Color.Unspecified
+        cardBorderCo= Color.Unspecified,
+        welcomeBac = Color.Unspecified
     )
 }
 
@@ -114,7 +116,8 @@ private val lightCustomColors = AtasuaiCustomColors(
     backgroundCustom = AtasuaiColors.Light.background,
     surfaceCustom = AtasuaiColors.Light.surface,
     placeholderCo= AtasuaiColors.Light.placeholderCo,
-    cardBorderCo= AtasuaiColors.Light.cardBorderCo
+    cardBorderCo= AtasuaiColors.Light.cardBorderCo,
+    welcomeBac = AtasuaiColors.Light.welcomeBac
 )
 
 private val darkCustomColors = AtasuaiCustomColors(
@@ -130,7 +133,8 @@ private val darkCustomColors = AtasuaiCustomColors(
     backgroundCustom = AtasuaiColors.Dark.background,
     surfaceCustom = AtasuaiColors.Dark.surface,
     placeholderCo = AtasuaiColors.Dark.placeholderCo,
-    cardBorderCo = AtasuaiColors.Dark.cardBorderCo
+    cardBorderCo = AtasuaiColors.Dark.cardBorderCo,
+    welcomeBac = AtasuaiColors.Dark.welcomeBac
 )
 
 // 主题Composable

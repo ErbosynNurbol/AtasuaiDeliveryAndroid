@@ -27,6 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusManager
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.input.key.KeyEvent
@@ -141,19 +142,19 @@ fun OtpDigit(
         mutableStateOf(TextFieldValue(text = digit, selection = TextRange(digit.length)))
     }
 
-    // 如果 onPreviewKeyEvent 已处理删除，这一轮 onValueChange 不再重复判定删除
+    var isFocused by remember { mutableStateOf(false) }
     var suppressNextDeleteFromOnValueChange by remember { mutableStateOf(false) }
 
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
-            .background(Color.White, RoundedCornerShape(10.dp))
+            .background(Color(0xFFF8F7FC), RoundedCornerShape(10.dp))
             .border(
                 width = 1.dp,
                 color = when {
-                    error -> Color.Red
-                    isAddPhone -> Color(0x382674E9)
-                    else -> Color(0xFFFFD9C0)
+                    error -> Color(0xFFFF4B4B)
+                    isFocused -> Color(0xFF4F89FC)
+                    else -> Color.Transparent
                 },
                 shape = RoundedCornerShape(10.dp)
             )
@@ -212,6 +213,9 @@ fun OtpDigit(
             modifier = Modifier
                 .fillMaxSize()
                 .focusRequester(focusRequester)
+                .onFocusChanged { focusState ->
+                    isFocused = focusState.isFocused
+                }
                 .onPreviewKeyEvent { event ->
                     if (event.type == KeyEventType.KeyDown && event.key == Key.Backspace) {
                         if (textFieldValue.text.isEmpty()) {

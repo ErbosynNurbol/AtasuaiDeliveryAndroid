@@ -1,6 +1,7 @@
 package kz.atasuai.delivery.ui.theme
 
 import androidx.compose.material3.Typography
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -41,3 +42,13 @@ val Typography = Typography(
     )
     */
 )
+
+val Typography.CargoPlaceStyle: TextStyle
+    @Composable
+    get() = TextStyle(
+        fontSize = 13.sp,
+        lineHeight = 13.sp,
+        fontFamily = PrimaryFontFamily,
+        fontWeight = FontWeight(500),
+        color = AtasuaiTheme.colors.placeholderCo,
+    )

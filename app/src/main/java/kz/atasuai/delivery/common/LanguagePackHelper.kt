@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.preference.PreferenceManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import kz.atasuai.market.common.JsonHelper
 import kz.atasuai.market.models.AjaxMsgModel
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient

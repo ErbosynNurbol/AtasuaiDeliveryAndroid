@@ -10,17 +10,18 @@ object AtasuaiColors {
     val White = Color(0xFFFFFFFF)
     val Black = Color(0xFF000000)
     val Black20 = Color(0x33000000)
-    val PrimaryColor = Color(0xFFE92365)
+    val PrimaryColor = Color(0xFF4F89FC)
 
     // Light主题颜色
     object Light {
-        val bacLightColor = Color(0xFFF8F9FA)
+        val bacLightColor = Color(0xFFF5F6FB).copy(alpha = 0.5f)
+        val welcomeBac = Color.White
         val textPrimary = Black
         val textSecondary = Color(0xFF666666)
         val textTertiary = Color(0xFF393939)
         val textDisabled = Color(0xFFCCCCCC)
         val placeholderCo = Color(0xFFA6A8B5)
-        val cardBorderCo = Color(0xFFE8EAEE)
+        val cardBorderCo = Color(0xFFE8EBF1)
         val textLink = Laurel
         val buttonSecondary = Silver
         val border = Color(0xFFE0E0E0)
@@ -32,6 +33,7 @@ object AtasuaiColors {
     // Dark主题颜色
     object Dark {
         val bacDarkColor = Color(0xFF202020)
+        val welcomeBac = Color(0xFF202020)
         val textPrimary = White
         val textSecondary = Color(0xFFB3B3B3)
         val textTertiary = Color(0xFF666666)

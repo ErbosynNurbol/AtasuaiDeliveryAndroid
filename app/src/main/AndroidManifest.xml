@@ -32,6 +32,9 @@
             android:exported="false"
             android:theme="@style/Theme.AtasuaiDelivery"
             android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".ui.activities.welcome.LoginActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AtasuaiDelivery"/>
     </application>
 
 </manifest>

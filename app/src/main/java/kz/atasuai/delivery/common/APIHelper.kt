@@ -28,7 +28,6 @@ object APIHelper {
                     .addHeader("X-Client-Platform", "Android-$androidVersion")
                     .addHeader("Authorization", "Bearer ${AtasuaiApp.currentToken}")
                     .addHeader("X-Sig", SigSigner.sig(url, method))
-                    .addHeader("City", "${AtasuaiApp.selectLocation.value.id}")
                     .build()
                 chain.proceed(request)
             }
