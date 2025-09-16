@@ -16,10 +16,12 @@ object AtasuaiColors {
     object Light {
         val bacLightColor = Color(0xFFF5F6FB).copy(alpha = 0.5f)
         val welcomeBac = Color.White
-        val textPrimary = Black
-        val textSecondary = Color(0xFF666666)
-        val textTertiary = Color(0xFF393939)
+        val textPrimary = Color(0xFF353535)
+        val textSecondary = Color(0xFF163063)
+        val textTertiary = Color(0xFF6B7280)
         val textDisabled = Color(0xFFCCCCCC)
+        val emptyTitleCo = Color(0xFF1D2630)
+        val emptyDesCo = Color(0xFF757575)
         val placeholderCo = Color(0xFFA6A8B5)
         val cardBorderCo = Color(0xFFE8EBF1)
         val textLink = Laurel
@@ -40,6 +42,8 @@ object AtasuaiColors {
         val textDisabled = Color(0xFF333333)
         val placeholderCo = Color(0xFFA3A3A3)
         val cardBorderCo = Color(0xFFE8EAEE)
+        val emptyTitleCo = Color(0xFF1D2630)
+        val emptyDesCo = Color(0xFF757575)
         val textLink = Color(0xFF8FB485)
         val buttonSecondary = Color(0xFF4A4A4A)
         val border = Color(0xFF333333)

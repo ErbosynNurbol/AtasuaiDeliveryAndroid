@@ -52,3 +52,53 @@ val Typography.CargoPlaceStyle: TextStyle
         fontWeight = FontWeight(500),
         color = AtasuaiTheme.colors.placeholderCo,
     )
+
+val Typography.ProposalIdStyle: TextStyle
+    @Composable
+    get() = TextStyle(
+        fontSize = 14.sp,
+        lineHeight = 14.sp,
+        fontFamily = PrimaryFontFamily,
+        fontWeight = FontWeight(600),
+        color = AtasuaiTheme.colors.textPrimary,
+    )
+
+val Typography.ProposalTimeStyle: TextStyle
+    @Composable
+    get() = TextStyle(
+        fontSize = 12.sp,
+        lineHeight = 12.sp,
+        fontFamily = PrimaryFontFamily,
+        fontWeight = FontWeight(400),
+        color = AtasuaiTheme.colors.textTertiary,
+    )
+
+val Typography.ProposalNameStyle: TextStyle
+    @Composable
+    get() = TextStyle(
+        fontSize = 18.sp,
+        lineHeight = 18.sp,
+        fontFamily = PrimaryFontFamily,
+        fontWeight = FontWeight(600),
+        color = AtasuaiTheme.colors.textSecondary,
+    )
+
+val Typography.EmptyTitleStyle: TextStyle
+    @Composable
+    get() = TextStyle(
+        fontSize = 18.sp,
+        lineHeight = 21.sp,
+        fontFamily = PrimaryFontFamily,
+        fontWeight = FontWeight(600),
+        color = AtasuaiTheme.colors.emptyTitleCo,
+    )
+
+val Typography.EmptyDesStyle: TextStyle
+    @Composable
+    get() = TextStyle(
+        fontSize = 14.sp,
+        lineHeight = 16.sp,
+        fontFamily = PrimaryFontFamily,
+        fontWeight = FontWeight(300),
+        color = AtasuaiTheme.colors.emptyDesCo,
+    )
