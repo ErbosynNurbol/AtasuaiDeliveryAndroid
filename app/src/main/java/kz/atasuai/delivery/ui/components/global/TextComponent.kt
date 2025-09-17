@@ -33,8 +33,8 @@ fun TitleStyle(text:String, fontSize: Float = 20f, fontWeight: Int = 600,
 }
 
 @Composable
-fun SpanStyle(text:String, fontSize: Float = 11f, fontWeight: Int = 400,
-              color: Color = AtasuaiTheme.colors.textSecondary,
+fun SpanStyle(text:String, fontSize: Float = 10f, fontWeight: Int = 400,
+              color: Color = AtasuaiTheme.colors.recommendTimeCo,
               modifier: Modifier=Modifier
 ){
     Text(

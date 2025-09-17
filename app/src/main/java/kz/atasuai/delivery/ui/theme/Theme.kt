@@ -84,6 +84,7 @@ data class AtasuaiCustomColors(
     val welcomeBac:Color,
     val emptyTitleCo :Color,
     val emptyDesCo :Color,
+    val recommendTimeCo:Color,
 )
 
 val LocalAtasuaiColors = staticCompositionLocalOf {
@@ -103,7 +104,8 @@ val LocalAtasuaiColors = staticCompositionLocalOf {
         cardBorderCo= Color.Unspecified,
         welcomeBac = Color.Unspecified,
         emptyTitleCo = Color.Unspecified,
-        emptyDesCo = Color.Unspecified
+        emptyDesCo = Color.Unspecified,
+        recommendTimeCo=Color.Unspecified,
     )
 }
 
@@ -123,7 +125,8 @@ private val lightCustomColors = AtasuaiCustomColors(
     cardBorderCo= AtasuaiColors.Light.cardBorderCo,
     welcomeBac = AtasuaiColors.Light.welcomeBac,
     emptyTitleCo = AtasuaiColors.Light.emptyTitleCo,
-    emptyDesCo = AtasuaiColors.Light.emptyDesCo
+    emptyDesCo = AtasuaiColors.Light.emptyDesCo,
+    recommendTimeCo = AtasuaiColors.Light.recommendTimeCo
 )
 
 private val darkCustomColors = AtasuaiCustomColors(
@@ -142,7 +145,8 @@ private val darkCustomColors = AtasuaiCustomColors(
     cardBorderCo = AtasuaiColors.Dark.cardBorderCo,
     welcomeBac = AtasuaiColors.Dark.welcomeBac,
     emptyTitleCo = AtasuaiColors.Dark.emptyTitleCo,
-    emptyDesCo = AtasuaiColors.Dark.emptyDesCo
+    emptyDesCo = AtasuaiColors.Dark.emptyDesCo,
+    recommendTimeCo = AtasuaiColors.Dark.recommendTimeCo
 )
 
 // 主题Composable

@@ -22,6 +22,7 @@ object AtasuaiColors {
         val textDisabled = Color(0xFFCCCCCC)
         val emptyTitleCo = Color(0xFF1D2630)
         val emptyDesCo = Color(0xFF757575)
+        val recommendTimeCo = Color(0xFF808080)
         val placeholderCo = Color(0xFFA6A8B5)
         val cardBorderCo = Color(0xFFE8EBF1)
         val textLink = Laurel
@@ -42,6 +43,7 @@ object AtasuaiColors {
         val textDisabled = Color(0xFF333333)
         val placeholderCo = Color(0xFFA3A3A3)
         val cardBorderCo = Color(0xFFE8EAEE)
+        val recommendTimeCo = Color(0xFF808080)
         val emptyTitleCo = Color(0xFF1D2630)
         val emptyDesCo = Color(0xFF757575)
         val textLink = Color(0xFF8FB485)

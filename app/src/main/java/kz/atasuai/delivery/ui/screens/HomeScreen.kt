@@ -27,6 +27,7 @@ import kz.atasuai.delivery.ui.components.home.HorizontalSlide
 import kz.atasuai.delivery.ui.components.home.OfflineCard
 import kz.atasuai.delivery.ui.components.home.RecommendCard
 import kz.atasuai.delivery.ui.components.home.ShowRecommend
+import kz.atasuai.delivery.ui.components.home.WelcomeModal
 import kz.atasuai.delivery.ui.theme.AtasuaiTheme
 import kz.atasuai.delivery.ui.theme.ProposalNameStyle
 import kz.atasuai.delivery.ui.viewmodels.home.HomeScreenViewModel
@@ -45,6 +46,14 @@ fun HomeScreen(
             showRecommend = false
         })
     }
+    var showWelcomeModal by remember { mutableStateOf(true) }
+    if(showWelcomeModal){
+        WelcomeModal( onDismissRequest = {
+            showRecommend = false
+        },context,currentLanguage)
+    }
+
+
     Column(modifier = Modifier.fillMaxSize()
         .background(AtasuaiTheme.colors.background)
     ){
