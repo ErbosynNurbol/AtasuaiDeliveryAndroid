@@ -12,7 +12,10 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import kz.atasuai.delivery.ui.AtasuaiApp
@@ -23,6 +26,7 @@ import kz.atasuai.delivery.ui.components.home.HomeNav
 import kz.atasuai.delivery.ui.components.home.HorizontalSlide
 import kz.atasuai.delivery.ui.components.home.OfflineCard
 import kz.atasuai.delivery.ui.components.home.RecommendCard
+import kz.atasuai.delivery.ui.components.home.ShowRecommend
 import kz.atasuai.delivery.ui.theme.AtasuaiTheme
 import kz.atasuai.delivery.ui.theme.ProposalNameStyle
 import kz.atasuai.delivery.ui.viewmodels.home.HomeScreenViewModel
@@ -35,7 +39,12 @@ fun HomeScreen(
     viewModel: HomeScreenViewModel,
     currentLanguage: LanguageModel
 ){
-    val showRecommend by remember{ multbleStateFlow(false)}
+    var showRecommend by remember { mutableStateOf(false) }
+    if(showRecommend){
+        ShowRecommend(currentLanguage, onDismissRequest = {
+            showRecommend = false
+        })
+    }
     Column(modifier = Modifier.fillMaxSize()
         .background(AtasuaiTheme.colors.background)
     ){
@@ -61,7 +70,9 @@ fun HomeScreen(
             state = rememberLazyListState(),
         ){
             item{
-                RecommendCard(modifier = Modifier.fillMaxWidth(),onClick = {})
+                RecommendCard(modifier = Modifier.fillMaxWidth(),onClick = {
+                    showRecommend = true
+                })
                 VSpacerHi(6f)
             }
             item{
