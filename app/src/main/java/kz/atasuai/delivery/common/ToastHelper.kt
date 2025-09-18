@@ -1,6 +1,7 @@
 package kz.atasuai.delivery.common
 
 import android.content.Context
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.ImageView
 import android.widget.TextView
@@ -11,7 +12,7 @@ import kz.atasuai.delivery.R
 enum class ToastType { SUCCESS, ERROR, WARNING }
 
 object ToastHelper {
-    fun showMessage(context: Context, type: ToastType,message: String) {
+    fun showMessage(context: Context, type: ToastType, message: String) {
         val inflater = LayoutInflater.from(context)
         val layout = inflater.inflate(R.layout.custom_toast_layout, null)
 
@@ -29,6 +30,9 @@ object ToastHelper {
         val toast = Toast(context)
         toast.duration = Toast.LENGTH_SHORT
         toast.view = layout
+
+        toast.setGravity(Gravity.TOP or Gravity.CENTER_HORIZONTAL, 0, 100)
+
         toast.show()
     }
 }

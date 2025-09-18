@@ -18,7 +18,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -32,7 +31,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kz.atasuai.delivery.R
 import kz.atasuai.delivery.common.ButtonStatus
-import kz.atasuai.delivery.common.CardSide
 import kz.atasuai.delivery.common.Translator.T
 import kz.atasuai.delivery.common.navigtion.ActivityList
 import kz.atasuai.delivery.ui.components.global.GlobalButton
@@ -47,7 +45,7 @@ import kz.atasuai.delivery.ui.viewmodels.welcome.RegisDeliveryViewModel
 import kz.atasuai.market.models.LanguageModel
 
 @Composable
-fun IDCardScreen(
+fun LicenseScreen(
     viewModel: RegisDeliveryViewModel,
     context: Context,
     currentLanguage: LanguageModel,
@@ -60,7 +58,7 @@ fun IDCardScreen(
 ){
     val listState = rememberLazyListState()
     Column (modifier= Modifier.fillMaxSize()
-                .background(AtasuaiTheme.colors.welcomeBac)
+        .background(AtasuaiTheme.colors.welcomeBac)
         .padding(horizontal = responsiveWidth(20f))
         .imePadding()
     ) {
@@ -114,7 +112,7 @@ fun IDCardScreen(
                 item{
                     VSpacerHi(40f)
                     Text(
-                        text = "Жеке куәлік",
+                        text = "Жүргізуші куәлігі",
                         style = TextStyle(
                             fontSize = 18.sp,
                             lineHeight = 18.sp,
@@ -142,7 +140,7 @@ fun IDCardScreen(
                         .fillMaxWidth()
                         .height(10.dp))
                     UploadTextField(viewModel,
-                        documentType = DocumentType.IDCardFront,
+                        documentType = DocumentType.LicenseFront,
                         currentLanguage = currentLanguage,
                         context = context
                     )
@@ -166,7 +164,7 @@ fun IDCardScreen(
                         .height(10.dp))
 
                     UploadTextField(viewModel,
-                        documentType = DocumentType.IDCardBack,
+                        documentType = DocumentType.LicenseBack,
                         currentLanguage = currentLanguage,
                         context = context
                     )
@@ -176,7 +174,7 @@ fun IDCardScreen(
         Column(modifier = Modifier.fillMaxWidth().weight(0.1f)) {
             GlobalButton(
                 text = T("ls_Further", currentLanguage),
-                status =ButtonStatus.Enabled ,
+                status = ButtonStatus.Enabled ,
                 onClick = {
                     onNext()
                 },

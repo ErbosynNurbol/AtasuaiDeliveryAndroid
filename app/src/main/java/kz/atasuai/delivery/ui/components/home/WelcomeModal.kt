@@ -26,9 +26,11 @@ import androidx.compose.ui.window.Dialog
 import kz.atasuai.delivery.R
 import kz.atasuai.delivery.common.ButtonStatus
 import kz.atasuai.delivery.common.Translator.T
+import kz.atasuai.delivery.common.navigtion.ActivityList
 import kz.atasuai.delivery.ui.components.global.GlobalButton
 import kz.atasuai.delivery.ui.components.global.VSpacerHi
 import kz.atasuai.delivery.ui.theme.PrimaryFontFamily
+import kz.atasuai.delivery.ui.viewmodels.QarBaseViewModel
 import kz.atasuai.market.models.LanguageModel
 
 
@@ -86,7 +88,7 @@ fun WelcomeModal(
                 text = T("ls_Register2", currentLanguage),
                 status = ButtonStatus.Enabled,
                 onClick = {
-
+                    QarBaseViewModel.Navigator.navigate(context, ActivityList.RegisActivity)
                 },
                 modifier = Modifier
                     .fillMaxWidth()

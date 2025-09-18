@@ -30,8 +30,10 @@ import kotlinx.coroutines.launch
 import kz.atasuai.delivery.common.ThemeMode
 import kz.atasuai.delivery.ui.AtasuaiApp
 import kz.atasuai.delivery.ui.components.global.noRippleClickable
+import kz.atasuai.delivery.ui.components.regis.CarIDScreen
 import kz.atasuai.delivery.ui.components.regis.ChooseModeScreen
 import kz.atasuai.delivery.ui.components.regis.IDCardScreen
+import kz.atasuai.delivery.ui.components.regis.LicenseScreen
 import kz.atasuai.delivery.ui.theme.AtasuaiScreen
 import kz.atasuai.delivery.ui.theme.AtasuaiTheme
 import kz.atasuai.delivery.ui.viewmodels.LanguageModalViewModel
@@ -81,7 +83,7 @@ fun RegisPagerView(
 ){
     val focusManager = LocalFocusManager.current
     val keyboardController = LocalSoftwareKeyboardController.current
-    val pageCount = 5
+    val pageCount = 4
     val pagerState = rememberPagerState(
         initialPage = 0,
         pageCount = { pageCount }
@@ -154,6 +156,28 @@ fun RegisPagerView(
                     pageOffset = pagerState.currentPageOffsetFraction
                 )
                 1 -> IDCardScreen(
+                    viewModel,
+                    context,
+                    currentLanguage,
+                    pageIndex = page,
+                    onPre = navigatePrev,
+                    onNext = navigateNext,
+                    currentPage = pagerState.currentPage,
+                    totalPages = pageCount,
+                    pageOffset = pagerState.currentPageOffsetFraction
+                )
+                2 -> LicenseScreen(
+                    viewModel,
+                    context,
+                    currentLanguage,
+                    pageIndex = page,
+                    onPre = navigatePrev,
+                    onNext = navigateNext,
+                    currentPage = pagerState.currentPage,
+                    totalPages = pageCount,
+                    pageOffset = pagerState.currentPageOffsetFraction
+                )
+                3 -> CarIDScreen(
                     viewModel,
                     context,
                     currentLanguage,

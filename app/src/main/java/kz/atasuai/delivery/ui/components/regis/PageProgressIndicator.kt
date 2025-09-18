@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import kz.atasuai.delivery.ui.theme.AtasuaiColors.PrimaryColor
 import kotlin.math.absoluteValue
 
 
@@ -22,7 +23,6 @@ fun PageProgressIndicator(
     totalPages: Int,
     pageOffset: Float = 0f,
     modifier: Modifier = Modifier,
-    isTransparent: Boolean = false
 ) {
     Row(
         modifier = modifier
@@ -43,14 +43,14 @@ fun PageProgressIndicator(
                 modifier = Modifier
                     .weight(1f)
                     .height(4.dp)
-                    .background(Color.Gray.copy(0.3f), RoundedCornerShape(2.dp))
+                    .background(Color(0xFFE8EBF1), RoundedCornerShape(2.dp))
             ) {
                 Box(
                     modifier = Modifier
                         .fillMaxHeight()
                         .fillMaxWidth(progress.coerceIn(0f, 1f))
                         .background(
-                           color = if(isTransparent) Color(0xFF1473FA) else Color(0xFFFF6B35),
+                           color = PrimaryColor,
                             RoundedCornerShape(2.dp)
                         )
                 )

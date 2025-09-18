@@ -18,6 +18,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import kz.atasuai.delivery.common.ToastHelper
+import kz.atasuai.delivery.common.ToastType
 import kz.atasuai.delivery.ui.AtasuaiApp
 import kz.atasuai.delivery.ui.components.global.VSpacerHi
 import kz.atasuai.delivery.ui.components.global.responsiveWidth
@@ -46,7 +48,7 @@ fun HomeScreen(
             showRecommend = false
         })
     }
-    var showWelcomeModal by remember { mutableStateOf(true) }
+    var showWelcomeModal by remember { mutableStateOf(false) }
     if(showWelcomeModal){
         WelcomeModal( onDismissRequest = {
             showRecommend = false

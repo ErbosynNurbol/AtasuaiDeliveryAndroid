@@ -18,8 +18,10 @@ object AtasuaiColors {
         val welcomeBac = Color.White
         val textPrimary = Color(0xFF353535)
         val textSecondary = Color(0xFF163063)
+        val documentTitleCo = Color(0xFF181D27)
         val textTertiary = Color(0xFF6B7280)
         val textDisabled = Color(0xFFCCCCCC)
+        val documentTypeCo = Color(0xFF7B7E90)
         val emptyTitleCo = Color(0xFF1D2630)
         val emptyDesCo = Color(0xFF757575)
         val recommendTimeCo = Color(0xFF808080)
@@ -39,8 +41,10 @@ object AtasuaiColors {
         val welcomeBac = Color(0xFF202020)
         val textPrimary = White
         val textSecondary = Color(0xFFB3B3B3)
+        val documentTitleCo = Color(0xFF181D27)
         val textTertiary = Color(0xFF666666)
         val textDisabled = Color(0xFF333333)
+        val documentTypeCo = Color(0xFF7B7E90)
         val placeholderCo = Color(0xFFA3A3A3)
         val cardBorderCo = Color(0xFFE8EAEE)
         val recommendTimeCo = Color(0xFF808080)
