@@ -32,6 +32,7 @@ import kz.atasuai.delivery.ui.AtasuaiApp
 import kz.atasuai.delivery.ui.components.global.noRippleClickable
 import kz.atasuai.delivery.ui.components.regis.CarIDScreen
 import kz.atasuai.delivery.ui.components.regis.ChooseModeScreen
+import kz.atasuai.delivery.ui.components.regis.FaceIDScreen
 import kz.atasuai.delivery.ui.components.regis.IDCardScreen
 import kz.atasuai.delivery.ui.components.regis.LicenseScreen
 import kz.atasuai.delivery.ui.theme.AtasuaiScreen
@@ -83,7 +84,7 @@ fun RegisPagerView(
 ){
     val focusManager = LocalFocusManager.current
     val keyboardController = LocalSoftwareKeyboardController.current
-    val pageCount = 4
+    val pageCount = 5
     val pagerState = rememberPagerState(
         initialPage = 0,
         pageCount = { pageCount }
@@ -152,7 +153,7 @@ fun RegisPagerView(
                     onPre = {  },
                     onNext = navigateNext,
                     currentPage = pagerState.currentPage,
-                    totalPages = pageCount,
+                    totalPages = pageCount - 1,
                     pageOffset = pagerState.currentPageOffsetFraction
                 )
                 1 -> IDCardScreen(
@@ -163,7 +164,7 @@ fun RegisPagerView(
                     onPre = navigatePrev,
                     onNext = navigateNext,
                     currentPage = pagerState.currentPage,
-                    totalPages = pageCount,
+                    totalPages = pageCount - 1,
                     pageOffset = pagerState.currentPageOffsetFraction
                 )
                 2 -> LicenseScreen(
@@ -174,7 +175,7 @@ fun RegisPagerView(
                     onPre = navigatePrev,
                     onNext = navigateNext,
                     currentPage = pagerState.currentPage,
-                    totalPages = pageCount,
+                    totalPages = pageCount - 1,
                     pageOffset = pagerState.currentPageOffsetFraction
                 )
                 3 -> CarIDScreen(
@@ -185,7 +186,18 @@ fun RegisPagerView(
                     onPre = navigatePrev,
                     onNext = navigateNext,
                     currentPage = pagerState.currentPage,
-                    totalPages = pageCount,
+                    totalPages = pageCount - 1,
+                    pageOffset = pagerState.currentPageOffsetFraction
+                )
+                4 -> FaceIDScreen(
+                    viewModel,
+                    context,
+                    currentLanguage,
+                    pageIndex = page,
+                    onPre = navigatePrev,
+                    onNext = navigateNext,
+                    currentPage = pagerState.currentPage,
+                    totalPages = pageCount - 1,
                     pageOffset = pagerState.currentPageOffsetFraction
                 )
 

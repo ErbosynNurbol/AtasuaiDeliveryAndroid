@@ -40,8 +40,8 @@ fun OnlineOfflineSwitch(
     modifier: Modifier = Modifier,
     currentLanguage:LanguageModel
 ) {
-    val switchTextCo1 = if(isOnline) Color(0xFF484C52) else Color(0xFFFFFFFF)
-    val switchTextCo2 = if(!isOnline) Color(0xFF484C52) else Color(0xFFFFFFFF)
+    val switchTextCo1 = if(!isOnline) Color(0xFF484C52) else Color(0xFFFFFFFF)
+    val switchTextCo2 = if(isOnline) Color(0xFF484C52) else Color(0xFFFFFFFF)
 
     Box(
         modifier = modifier
@@ -65,7 +65,7 @@ fun OnlineOfflineSwitch(
                     .weight(0.5f)
                     .fillMaxHeight()
                     .background(
-                        color = if (isOnline) Color(0xFFEF4444) else Color(0xFFFFFFFF),
+                        color = if (!isOnline) Color(0xFFEF4444) else Color(0xFFFFFFFF),
                         shape = CircleShape
                     ),
                 contentAlignment = Alignment.Center
@@ -87,7 +87,7 @@ fun OnlineOfflineSwitch(
                     .weight(0.5f)
                     .fillMaxHeight()
                     .background(
-                        color = if (!isOnline) Color(0xFF29BE10) else Color(0xFFFFFFFF),
+                        color = if (isOnline) Color(0xFF29BE10) else Color(0xFFFFFFFF),
                         shape = CircleShape
                     ),
                 contentAlignment = Alignment.Center

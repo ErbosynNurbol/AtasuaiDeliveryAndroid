@@ -16,8 +16,12 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -27,6 +31,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kz.atasuai.delivery.R
@@ -35,17 +40,20 @@ import kz.atasuai.delivery.common.Translator.T
 import kz.atasuai.delivery.common.navigtion.ActivityList
 import kz.atasuai.delivery.ui.components.global.GlobalButton
 import kz.atasuai.delivery.ui.components.global.VSpacerHi
+import kz.atasuai.delivery.ui.components.global.VSpacerWi
 import kz.atasuai.delivery.ui.components.global.noRippleClickable
 import kz.atasuai.delivery.ui.components.global.responsiveWidth
 import kz.atasuai.delivery.ui.theme.AtasuaiTheme
+import kz.atasuai.delivery.ui.theme.EmptyTitleStyle
 import kz.atasuai.delivery.ui.theme.PrimaryFontFamily
 import kz.atasuai.delivery.ui.viewmodels.QarBaseViewModel
+import kz.atasuai.delivery.ui.viewmodels.welcome.DeliveryType
 import kz.atasuai.delivery.ui.viewmodels.welcome.DocumentType
 import kz.atasuai.delivery.ui.viewmodels.welcome.RegisDeliveryViewModel
 import kz.atasuai.market.models.LanguageModel
 
 @Composable
-fun LicenseScreen(
+fun FaceIDScreen(
     viewModel: RegisDeliveryViewModel,
     context: Context,
     currentLanguage: LanguageModel,
@@ -109,65 +117,56 @@ fun LicenseScreen(
                         pageOffset = pageOffset
                     )
                 }
-                item{
-                    VSpacerHi(40f)
-                    Text(
-                        text = "Жүргізуші куәлігі",
-                        style = TextStyle(
-                            fontSize = 18.sp,
-                            lineHeight = 18.sp,
-                            fontFamily = PrimaryFontFamily,
-                            fontWeight = FontWeight(500),
-                            color = AtasuaiTheme.colors.documentTitleCo,
-                        )
-                    )
-                    VSpacerHi(36f)
-                    Row {
-                        Text(
-                            text = T("ls_Frontside", currentLanguage),
-                            style = TextStyle(
-                                fontSize = 14.sp,
-                                lineHeight = 14.sp,
-                                fontFamily = PrimaryFontFamily,
-                                fontWeight = FontWeight(300),
-                                color = AtasuaiTheme.colors.documentTypeCo,
-                            )
-                        )
+               item{
+                   VSpacerHi(60f)
+                   Column(modifier = Modifier.fillMaxWidth(),
+                       horizontalAlignment = Alignment.CenterHorizontally,
+                       verticalArrangement = Arrangement.Center
+                       ){
+                       Image(
+                           painter = painterResource(id = R.drawable.app_dark_logo),
+                           contentDescription = "shop_share_icon",
+                           modifier = Modifier
+                               .padding(0.dp)
+                               .width(147.dp)
+                               .height(31.dp)
+                       )
+                       VSpacerHi(50f)
+                       Image(
+                           painter = painterResource(id = R.drawable.face_welcome_icon),
+                           contentDescription = "face",
+                           modifier = Modifier
+                               .padding(0.dp)
+                               .width(360.dp)
+                               .height(241.dp)
 
-                    }
-                    Spacer(modifier = Modifier
-                        .fillMaxWidth()
-                        .height(10.dp))
-                    UploadTextField(viewModel,
-                        documentType = DocumentType.LicenseFront,
-                        currentLanguage = currentLanguage,
-                        context = context
-                    )
-                    Spacer(modifier = Modifier
-                        .fillMaxWidth()
-                        .height(15.dp))
-                    Row {
-                        Text(
-                            text = T("ls_Backside", currentLanguage),
-                            style = TextStyle(
-                                fontSize = 14.sp,
-                                lineHeight = 14.sp,
-                                fontFamily = PrimaryFontFamily,
-                                fontWeight = FontWeight(300),
-                                color = AtasuaiTheme.colors.documentTypeCo,
-                            )
-                        )
-                    }
-                    Spacer(modifier = Modifier
-                        .fillMaxWidth()
-                        .height(10.dp))
-
-                    UploadTextField(viewModel,
-                        documentType = DocumentType.LicenseBack,
-                        currentLanguage = currentLanguage,
-                        context = context
-                    )
-                }
+                       )
+                       VSpacerHi(38f)
+                       Text(
+                           text = "Face ID арқылы растау",
+                           style = TextStyle(
+                               fontSize = 20.sp,
+                               lineHeight = 18.sp,
+                               fontFamily = PrimaryFontFamily,
+                               fontWeight = FontWeight(600),
+                               color = AtasuaiTheme.colors.documentTitleCo,
+                           )
+                       )
+                       VSpacerHi(15f)
+                       Text(
+                           text = "Face ID верификациясын міндетті түрде өту керек. Бұл жүйе қолданушылар үшін қауіпсіздікті қамтамасыз етеді",
+                           style = TextStyle(
+                               fontSize = 14.sp,
+                               lineHeight = 14.sp,
+                               fontFamily = PrimaryFontFamily,
+                               fontWeight = FontWeight(300),
+                               color = AtasuaiTheme.colors.documentTypeCo,
+                               textAlign = TextAlign.Center
+                           ),
+                           modifier = Modifier.width(298.dp)
+                       )
+                   }
+               }
             }
         }
         Column(modifier = Modifier.fillMaxWidth().weight(0.1f)) {
@@ -183,5 +182,4 @@ fun LicenseScreen(
             )
         }
     }
-
 }

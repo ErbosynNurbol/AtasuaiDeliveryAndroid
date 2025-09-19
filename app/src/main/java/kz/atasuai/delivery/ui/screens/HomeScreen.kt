@@ -12,6 +12,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -20,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import kz.atasuai.delivery.common.ToastHelper
 import kz.atasuai.delivery.common.ToastType
+import kz.atasuai.delivery.datastore.OnlineMode
 import kz.atasuai.delivery.ui.AtasuaiApp
 import kz.atasuai.delivery.ui.components.global.VSpacerHi
 import kz.atasuai.delivery.ui.components.global.responsiveWidth
@@ -42,6 +44,7 @@ fun HomeScreen(
     viewModel: HomeScreenViewModel,
     currentLanguage: LanguageModel
 ){
+    val isOnline by OnlineMode.isOnline.collectAsState()
     var showRecommend by remember { mutableStateOf(false) }
     if(showRecommend){
         ShowRecommend(currentLanguage, onDismissRequest = {
@@ -73,23 +76,28 @@ fun HomeScreen(
             )
         }
         VSpacerHi(16f)
-        LazyColumn (
-            modifier = Modifier.fillMaxWidth()
-                .weight(1f)
-                .padding(horizontal = responsiveWidth(20f))
-            ,
-            state = rememberLazyListState(),
-        ){
-            item{
-                RecommendCard(modifier = Modifier.fillMaxWidth(),onClick = {
-                    showRecommend = true
-                })
-                VSpacerHi(6f)
+        if(isOnline){
+            LazyColumn (
+                modifier = Modifier.fillMaxWidth()
+                    .weight(1f)
+                    .padding(horizontal = responsiveWidth(20f))
+                ,
+                state = rememberLazyListState(),
+            ){
+                item{
+                    RecommendCard(modifier = Modifier.fillMaxWidth(),onClick = {
+                        showRecommend = true
+                    })
+                    VSpacerHi(6f)
+                }
+                item{
+                    RecommendCard(modifier = Modifier.fillMaxWidth(),onClick = {})
+                }
             }
-            item{
-                RecommendCard(modifier = Modifier.fillMaxWidth(),onClick = {})
-            }
+        }else{
+            OfflineCard(currentLanguage, modifier = Modifier.fillMaxWidth())
         }
+
 
 //        EmptyProposal(currentLanguage,modifier=Modifier.weight(1f))
 
