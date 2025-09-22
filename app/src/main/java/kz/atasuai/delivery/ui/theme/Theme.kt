@@ -87,6 +87,7 @@ data class AtasuaiCustomColors(
     val recommendTimeCo:Color,
     val documentTitleCo:Color,
     val documentTypeCo:Color,
+    val profileCardCo:Color,
 )
 
 val LocalAtasuaiColors = staticCompositionLocalOf {
@@ -110,6 +111,7 @@ val LocalAtasuaiColors = staticCompositionLocalOf {
         recommendTimeCo=Color.Unspecified,
         documentTitleCo = Color.Unspecified,
         documentTypeCo = Color.Unspecified,
+        profileCardCo = Color.Unspecified
     )
 }
 
@@ -132,7 +134,8 @@ private val lightCustomColors = AtasuaiCustomColors(
     emptyDesCo = AtasuaiColors.Light.emptyDesCo,
     recommendTimeCo = AtasuaiColors.Light.recommendTimeCo,
     documentTitleCo = AtasuaiColors.Light.documentTitleCo,
-    documentTypeCo = AtasuaiColors.Light.documentTypeCo
+    documentTypeCo = AtasuaiColors.Light.documentTypeCo,
+    profileCardCo = AtasuaiColors.Light.profileCardCo
 )
 
 private val darkCustomColors = AtasuaiCustomColors(
@@ -154,7 +157,8 @@ private val darkCustomColors = AtasuaiCustomColors(
     emptyDesCo = AtasuaiColors.Dark.emptyDesCo,
     recommendTimeCo = AtasuaiColors.Dark.recommendTimeCo,
     documentTitleCo = AtasuaiColors.Dark.documentTitleCo,
-    documentTypeCo = AtasuaiColors.Dark.documentTypeCo
+    documentTypeCo = AtasuaiColors.Dark.documentTypeCo,
+    profileCardCo = AtasuaiColors.Dark.profileCardCo
 )
 
 // 主题Composable

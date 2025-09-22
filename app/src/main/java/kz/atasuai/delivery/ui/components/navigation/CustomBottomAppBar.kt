@@ -190,7 +190,7 @@ fun RowScope.BottomNavItem(
     }
 }
 
-private fun NavHostController.navigateSingleTop(route: String) {
+fun NavHostController.navigateSingleTop(route: String) {
     navigate(route) {
         popUpTo(graph.findStartDestination().id) {
             saveState = true

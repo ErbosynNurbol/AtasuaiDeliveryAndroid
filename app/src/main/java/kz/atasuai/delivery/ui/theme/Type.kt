@@ -2,6 +2,7 @@ package kz.atasuai.delivery.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -101,4 +102,14 @@ val Typography.EmptyDesStyle: TextStyle
         fontFamily = PrimaryFontFamily,
         fontWeight = FontWeight(300),
         color = AtasuaiTheme.colors.emptyDesCo,
+    )
+
+val Typography.ProfileTitleStyle: TextStyle
+    @Composable
+    get() = TextStyle(
+        fontSize = 15.sp,
+        lineHeight = 15.sp,
+        fontFamily = PrimaryFontFamily,
+        fontWeight = FontWeight(400),
+        color = Color(0xFF121212),
     )

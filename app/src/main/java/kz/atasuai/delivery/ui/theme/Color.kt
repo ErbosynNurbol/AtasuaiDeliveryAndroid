@@ -33,12 +33,13 @@ object AtasuaiColors {
         val divider = Color(0xFFF4F4F4)
         val background = Seashell
         val surface = White
+        val profileCardCo = Color(0xFFF2F5F9)
     }
 
     // Dark主题颜色
     object Dark {
         val bacDarkColor = Color(0xFF202020)
-        val welcomeBac = Color(0xFF202020)
+        val welcomeBac = Color.White
         val textPrimary = White
         val textSecondary = Color(0xFFB3B3B3)
         val documentTitleCo = Color(0xFF181D27)
@@ -56,5 +57,7 @@ object AtasuaiColors {
         val divider = Color(0xFF2A2A2A)
         val background = Color(0xFF121212)
         val surface = Color(0xFF1E1E1E)
+        val profileCardCo = Color(0xFFF2F5F9)
+
     }
 }

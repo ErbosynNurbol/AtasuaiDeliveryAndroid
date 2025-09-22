@@ -99,7 +99,7 @@ fun MainNavigation(
                             HomeScreen(context, darkTheme, viewModel, currentLanguage)
                         }
                         composable("order") {
-                            OrderScreen(context, darkTheme, orderViewModel, currentLanguage)
+                            OrderScreen(context, darkTheme, orderViewModel, currentLanguage,navController)
                         }
                         composable("notification") {
                             NotificationScreen(context, darkTheme, reportViewModel, currentLanguage)
