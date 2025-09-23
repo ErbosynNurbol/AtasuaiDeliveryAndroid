@@ -21,6 +21,8 @@
 
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -56,6 +58,15 @@
             android:name="com.yalantis.ucrop.UCropActivity"
             android:exported="false"
             android:theme="@style/Theme.AtasuaiDelivery" />
+        <activity android:name=".ui.activities.notification.OrderActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AtasuaiDelivery"/>
+        <activity android:name=".ui.activities.notification.IncomeActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AtasuaiDelivery"/>
+        <activity android:name=".ui.activities.home.ScanQRActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AtasuaiDelivery"/>
 
 
 

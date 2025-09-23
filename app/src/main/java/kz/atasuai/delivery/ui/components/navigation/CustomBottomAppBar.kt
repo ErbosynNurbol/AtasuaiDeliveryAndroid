@@ -47,20 +47,34 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import kz.atasuai.delivery.R
 import kz.atasuai.delivery.common.Translator.T
 import kz.atasuai.delivery.ui.AtasuaiApp
+import kz.atasuai.delivery.ui.components.global.noRippleClickable
+import kz.atasuai.delivery.ui.screens.ScanQRModal
 import kz.atasuai.delivery.ui.theme.AtasuaiColors.PrimaryColor
 import kz.atasuai.delivery.ui.theme.PrimaryFontFamily
 import kz.atasuai.delivery.ui.theme.topShadow
+import kz.atasuai.delivery.ui.viewmodels.home.ScanQRViewModel
 
 
 @Composable
 fun CustomBottomAppBar(
     navController: NavHostController,
-    context: Context
+    context: Context,
+    qrViewModel: ScanQRViewModel
 ) {
     val currentBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = currentBackStackEntry?.destination?.route
     val currentLanguage by AtasuaiApp.currentLanguage.collectAsState()
-
+    var showModal by remember { mutableStateOf(false) }
+    if(showModal){
+        ScanQRModal(
+            onDismissRequest = {
+                showModal = false
+            },
+            context = context,
+            darkTheme = false,
+            viewModel = qrViewModel,
+            currentLanguage = currentLanguage)
+    }
     Box {
         Row(
             modifier = Modifier
@@ -121,8 +135,8 @@ fun CustomBottomAppBar(
                     ambientColor = Color(0xFF4F89FC),
                     spotColor = Color(0xFF4F89FC)
                 )
-                .clickable {
-                    navController.navigateSingleTop("qrScreen")
+                .noRippleClickable {
+                    showModal = true
                 }
         )
     }

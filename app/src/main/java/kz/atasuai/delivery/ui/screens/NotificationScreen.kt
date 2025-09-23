@@ -54,6 +54,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import kotlinx.coroutines.launch
 import kz.atasuai.delivery.R
+import kz.atasuai.delivery.common.Translator.T
 import kz.atasuai.delivery.common.navigtion.ActivityList
 import kz.atasuai.delivery.ui.components.global.TitleStyle
 import kz.atasuai.delivery.ui.components.global.VSpacerHi
@@ -143,7 +144,7 @@ fun NotificationScreen(
                                 )
                                 VSpacerHi(5f)
                                 Text(
-                                    text = "Өшіру",
+                                    text ="Өшіру",
                                     style = TextStyle(
                                         fontSize = 12.sp,
                                         lineHeight = 13.2.sp,
@@ -168,7 +169,7 @@ fun NotificationScreen(
                                 )
                                 VSpacerHi(5f)
                                 Text(
-                                    text = "Өшіру",
+                                    text =  T("ls_Delete",currentLanguage),
                                     style = TextStyle(
                                         fontSize = 12.sp,
                                         lineHeight = 13.2.sp,
@@ -191,6 +192,9 @@ fun NotificationScreen(
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
+                                .noRippleClickable {
+                                    QarBaseViewModel.Navigator.navigate(context, ActivityList.OrderActivity)
+                                }
                                 .offset { IntOffset(swipeOffsetX.value.roundToInt(), 0) }
                                 .pointerInput(Unit) {
                                     detectHorizontalDragGestures(
@@ -364,6 +368,9 @@ fun NotificationScreen(
                     ) {
                         Row(
                             modifier = Modifier
+                                .noRippleClickable {
+                                    QarBaseViewModel.Navigator.navigate(context, ActivityList.IncomeActivity)
+                                }
                                 .fillMaxWidth()
                                 .offset { IntOffset(swipeOffsetX.value.roundToInt(), 0) }
                                 .pointerInput(Unit) {
@@ -394,7 +401,7 @@ fun NotificationScreen(
                             VSpacerWi(12f)
                             Column(modifier = Modifier.weight(1f)){
                                 TitleStyle(
-                                    text = "Табыс",
+                                    text = T("ls_Income",currentLanguage),
                                     fontSize = 16f, fontWeight = 600
                                 )
                                 VSpacerHi(7f)

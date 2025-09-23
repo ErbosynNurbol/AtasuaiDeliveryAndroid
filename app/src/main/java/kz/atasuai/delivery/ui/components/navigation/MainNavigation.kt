@@ -11,7 +11,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -29,14 +31,14 @@ import kz.atasuai.delivery.ui.screens.HomeScreen
 import kz.atasuai.delivery.ui.screens.NotificationScreen
 import kz.atasuai.delivery.ui.screens.OrderScreen
 import kz.atasuai.delivery.ui.screens.ProfileScreen
-import kz.atasuai.delivery.ui.screens.ShowQRScreen
+import kz.atasuai.delivery.ui.screens.ScanQRModal
 import kz.atasuai.delivery.ui.theme.navigationBarsPadding
 import kz.atasuai.delivery.ui.viewmodels.QarBaseViewModel
 import kz.atasuai.delivery.ui.viewmodels.home.HomeScreenViewModel
+import kz.atasuai.delivery.ui.viewmodels.home.ScanQRViewModel
 import kz.atasuai.delivery.ui.viewmodels.notification.NotificationViewModel
 import kz.atasuai.delivery.ui.viewmodels.order.OrderViewModel
 import kz.atasuai.delivery.ui.viewmodels.profile.ProfileViewModel
-import kz.atasuai.delivery.ui.viewmodels.qr.QRScreenViewModel
 
 
 @Composable
@@ -54,7 +56,7 @@ fun MainNavigation(
     val reportViewModel: NotificationViewModel = viewModel()
     val orderViewModel: OrderViewModel = viewModel()
     val profileViewModel: ProfileViewModel = viewModel()
-    val qrViewModel: QRScreenViewModel = viewModel()
+    val qrViewModel: ScanQRViewModel = viewModel()
 
     val startRoute = qarBaseViewModel.currentRoute.value.takeIf { it.isNotEmpty() } ?: "home"
 
@@ -77,7 +79,7 @@ fun MainNavigation(
             bottomBar = {
                 CustomBottomAppBar(
                     navController = navController,
-                    context = context
+                    context = context,qrViewModel
                 )
             }
         ) { innerPadding ->
@@ -108,16 +110,12 @@ fun MainNavigation(
                         composable("profile") {
                             ProfileScreen(context, darkTheme, profileViewModel, currentLanguage)
                         }
-                        composable("qrScreen"){
-                            ShowQRScreen(context, darkTheme, qrViewModel, currentLanguage)
-                        }
                     }
                     ConnectivityStatus.Unavailable -> {
                         composable("home") { NoInternetPage() }
                         composable("shop") { NoInternetPage() }
                         composable("bonus") { NoInternetPage() }
                         composable("menu") { NoInternetPage() }
-                        composable("qrScreen") { NoInternetPage() }
                     }
                 }
             }
