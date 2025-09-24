@@ -79,6 +79,7 @@ import kz.atasuai.delivery.ui.AtasuaiApp.Companion.currentLanguage
 import kz.atasuai.delivery.ui.components.global.TitleStyle
 import kz.atasuai.delivery.ui.components.global.VSpacerHi
 import kz.atasuai.delivery.ui.components.global.VSpacerWi
+import kz.atasuai.delivery.ui.components.qr.ManualQRCode
 import kz.atasuai.delivery.ui.components.qr.QRShowSwitch
 import kz.atasuai.delivery.ui.components.qr.QRTypeSwitch
 import kz.atasuai.delivery.ui.components.qr.qrsystem.QRGenerator
@@ -103,6 +104,16 @@ fun ScanQRModal(
         }
     }
     val isScanQR by viewModel.isScanQR.collectAsStateWithLifecycle()
+    var showManualQR by remember { mutableStateOf(false) }
+    if(showManualQR){
+        ManualQRCode(
+            viewModel,
+            currentLanguage = currentLanguage,
+            onDismissRequest = {
+                showManualQR = false
+            }
+        )
+    }
     ModalBottomSheet(
         modifier = Modifier.fillMaxSize(),
         onDismissRequest = onDismissRequest,
@@ -294,6 +305,9 @@ fun ScanQRModal(
                                        horizontalArrangement = Arrangement.Center
                                    ){
                                        Row(modifier = Modifier.wrapContentSize()
+                                           .noRippleClickable {
+                                               showManualQR = true
+                                           }
                                            .background(
                                                brush = Brush.verticalGradient(
                                                    colors = listOf(

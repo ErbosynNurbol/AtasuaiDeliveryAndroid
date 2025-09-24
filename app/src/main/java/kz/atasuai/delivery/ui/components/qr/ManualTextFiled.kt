@@ -1,4 +1,4 @@
-package kz.atasuai.delivery.ui.components.home
+package kz.atasuai.delivery.ui.components.qr
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -31,31 +31,24 @@ import kz.atasuai.market.models.LanguageModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SearchTextFiled(
+fun ManualTextFiled(
+    modifier: Modifier = Modifier,
     text: String,
     onTextChange: (String) -> Unit,
     placeholderText: String,
     currentLanguage: LanguageModel,
     isError: Boolean = false,
-    modifier: Modifier = Modifier,
     onChange:()->Unit,
 ) {
     var textState by remember { mutableStateOf(text) }
     val keyboardController = LocalSoftwareKeyboardController.current
     val textStyle = TextStyle(
-        fontSize = 14.sp,
+        fontSize = 18.sp,
         lineHeight = 20.sp,
         fontFamily = PrimaryFontFamily,
-        fontWeight = FontWeight(400),
-        color = AtasuaiTheme.colors.textPrimary,
+        fontWeight = FontWeight(600),
+        color = AtasuaiTheme.colors.textSecondary,
     )
-    val pleceholder = TextStyle(
-                        fontSize = 14.sp,
-                        lineHeight = 16.8.sp,
-                        fontFamily = PrimaryFontFamily,
-                        fontWeight = FontWeight(400),
-                        color = Color(0xFFAEAEAE),
-                    )
     TextField(
         value = textState,
         onValueChange = { input ->
@@ -67,14 +60,12 @@ fun SearchTextFiled(
         placeholder = {
             Text(
                 text = T(placeholderText, currentLanguage),
-                style = pleceholder
+                style = MaterialTheme.typography.CargoPlaceStyle
             )
         },
         textStyle = textStyle,
         modifier = modifier
             .fillMaxWidth()
-            .background(color = Color(0xFFFFFFFF), shape = RoundedCornerShape(size = 10.dp))
-            .border(width = 1.dp, color = Color(0xFFE8EAEE), shape = RoundedCornerShape(size = 10.dp))
     ,
         shape = RoundedCornerShape(10.dp),
         keyboardActions = KeyboardActions(
@@ -92,7 +83,7 @@ fun SearchTextFiled(
             unfocusedContainerColor =Color(0xFFFFFFFF),
             disabledContainerColor = Color(0xFFFFFFFF).copy(alpha = 0.5f),
             errorContainerColor = if (isError) Color.Red.copy(alpha = 0.1f) else Color.White,
-            cursorColor = Color.Black,
+            cursorColor = PrimaryColor,
             errorCursorColor = Color.Red,
             selectionColors = TextSelectionColors(
                 handleColor = Color.Black,
@@ -108,28 +99,8 @@ fun SearchTextFiled(
             errorPlaceholderColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
         ),
         trailingIcon = {
-//            Image(
-//                painter = painterResource(id = R.drawable.clear_icon),
-//                contentDescription = "clear",
-//                modifier = Modifier
-//                    .size(28.dp)
-//                    .noRippleClickable {
-//                        onTextChange("")
-//                    }
-//            )
         },
         leadingIcon = {
-            Icon(
-                painter = painterResource(id = R.drawable.search_icon),
-                contentDescription = "clear",
-                tint = Color(0xFFAEAEAE),
-                modifier = Modifier
-                    .size(24.dp)
-                    .noRippleClickable {
-                        onChange()
-                    }
-            )
-
         },
         keyboardOptions = KeyboardOptions.Default.copy(
             keyboardType = KeyboardType.Text,

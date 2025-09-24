@@ -264,8 +264,7 @@ class VerificationViewModel : QarBaseViewModel() {
                         setLoginType(LoginType.Regis)
                         val token = response.data.toString()
                         AtasuaiApp.setCurrentPerson(token);
-                        ToastHelper.showMessage(context, ToastType.SUCCESS, response.message)
-                        Navigator.navigate(context = context, ActivityList.MainActivity,clearTask = true)
+                        Navigator.navigate(context = context, ActivityList.RegisActivity,clearTask = true)
                         AtasuaiApp.updateIsFirstRegis(true)
                     } else {
                         val token = response.data.toString()

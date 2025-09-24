@@ -10,4 +10,5 @@ enum class ActivityList(val activityClass: KClass<out Activity>) {
     OrderActivity(kz.atasuai.delivery.ui.activities.notification.OrderActivity::class),
     IncomeActivity(kz.atasuai.delivery.ui.activities.notification.IncomeActivity::class),
     ScanQRActivity(kz.atasuai.delivery.ui.activities.home.ScanQRActivity::class),
+    SupportActivity(kz.atasuai.delivery.ui.activities.profile.SupportActivity::class),
 }

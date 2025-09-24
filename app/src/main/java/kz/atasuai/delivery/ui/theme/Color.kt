@@ -14,7 +14,7 @@ object AtasuaiColors {
 
     // Light主题颜色
     object Light {
-        val bacLightColor = Color(0xFFF5F6FB).copy(alpha = 0.5f)
+        val bacLightColor = Color(0xFFF5F6FB)
         val welcomeBac = Color.White
         val textPrimary = Color(0xFF353535)
         val textSecondary = Color(0xFF163063)

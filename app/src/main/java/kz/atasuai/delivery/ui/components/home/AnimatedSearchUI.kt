@@ -149,21 +149,23 @@ fun AnimatedSearchUI(
                         .height(responsiveWidth(52f)),
                     onChange = {}
                 )
-
-                Text(
-                    text = T("ls_Cancel", currentLanguage),
-                    style = TextStyle(
-                        fontSize = 13.sp,
-                        lineHeight = 14.3.sp,
-                        fontFamily = PrimaryFontFamily,
-                        fontWeight = FontWeight(500),
-                        color = Color(0xFF595959),
-                    ),
-                    modifier = Modifier
-                        .noRippleClickable {
-                            viewModel.setChangeSearch(false)
-                        }
-                )
+                Box(modifier = Modifier.size(responsiveWidth(52f))
+                    .border(width = 1.dp, color = Color(0xFFE8EAEE), shape = RoundedCornerShape(size = 14.dp))
+                    .background(color = Color(0xFFFFFFFF), shape = RoundedCornerShape(size = 14.dp))
+                    ,
+                    contentAlignment = Alignment.Center
+                    ){
+                    Icon(
+                        painter = painterResource(id = R.drawable.close_icon_red),
+                        contentDescription = "close",
+                        modifier = Modifier.size(24.dp)
+                            .noRippleClickable {
+                                viewModel.setChangeSearch(false)
+                            }
+                        ,
+                        tint = Color(0xFF163063)
+                    )
+                }
             }
         }
     }

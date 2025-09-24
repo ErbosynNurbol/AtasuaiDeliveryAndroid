@@ -47,10 +47,10 @@ val Typography = Typography(
 val Typography.CargoPlaceStyle: TextStyle
     @Composable
     get() = TextStyle(
-        fontSize = 13.sp,
-        lineHeight = 13.sp,
+        fontSize = 18.sp,
+        lineHeight = 18.sp,
         fontFamily = PrimaryFontFamily,
-        fontWeight = FontWeight(500),
+        fontWeight = FontWeight(600),
         color = AtasuaiTheme.colors.placeholderCo,
     )
 

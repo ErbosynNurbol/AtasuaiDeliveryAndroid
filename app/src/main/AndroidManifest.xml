@@ -67,6 +67,9 @@
         <activity android:name=".ui.activities.home.ScanQRActivity"
             android:exported="false"
             android:theme="@style/Theme.AtasuaiDelivery"/>
+        <activity android:name=".ui.activities.profile.SupportActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AtasuaiDelivery"/>
 
 
 

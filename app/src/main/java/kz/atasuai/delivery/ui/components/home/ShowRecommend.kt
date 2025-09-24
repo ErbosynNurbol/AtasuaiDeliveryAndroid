@@ -35,6 +35,7 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kz.atasuai.delivery.R
@@ -78,9 +79,9 @@ fun ShowRecommend(currentLanguage: LanguageModel,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 20.dp)
-                .height(screenHeight * 0.8f)
+                .height(screenHeight * 0.75f)
         ) {
-            Column(modifier = Modifier.weight(0.85f)){
+            Column(modifier = Modifier.weight(0.80f)){
                 LazyColumn(
                     state = rememberLazyListState(),
                     modifier = Modifier.fillMaxSize()
@@ -428,10 +429,12 @@ fun ShowRecommend(currentLanguage: LanguageModel,
                         }
 
                     }
+                    item{
+                        VSpacerHi(16f)
+                    }
                 }
             }
-            Row(modifier = Modifier.fillMaxWidth().weight(0.15f),
-                verticalAlignment = Alignment.CenterVertically
+            Column(modifier = Modifier.fillMaxWidth().weight(0.25f),
             ){
                 GlobalButton(
                     text = T("ls_Accept",currentLanguage),
@@ -442,6 +445,25 @@ fun ShowRecommend(currentLanguage: LanguageModel,
                     },
                     modifier = Modifier.fillMaxWidth()
                 )
+                VSpacerHi(8f)
+                Box(modifier = Modifier
+                    .border(width = 1.dp, color = Color(0xFFFF4B4B), shape = RoundedCornerShape(size = 12.dp))
+                    .fillMaxWidth()
+                    .height(50.dp),
+                 contentAlignment = Alignment.Center
+                    ){
+                    Text(
+                        text = "Бас тарту",
+                        style = TextStyle(
+                            fontSize = 14.sp,
+                            lineHeight = 14.sp,
+                            fontFamily = PrimaryFontFamily,
+                            fontWeight = FontWeight(500),
+                            color = Color(0xFFFF4B4B),
+                            textAlign = TextAlign.Center,
+                        )
+                    )
+                }
             }
 
         }

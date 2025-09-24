@@ -21,10 +21,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kz.atasuai.delivery.R
 import kz.atasuai.delivery.common.Translator.T
+import kz.atasuai.delivery.common.navigtion.ActivityList
 import kz.atasuai.delivery.ui.components.global.VSpacerHi
 import kz.atasuai.delivery.ui.components.global.VSpacerWi
+import kz.atasuai.delivery.ui.components.global.noRippleClickable
 import kz.atasuai.delivery.ui.theme.AtasuaiTheme
 import kz.atasuai.delivery.ui.theme.ProfileTitleStyle
+import kz.atasuai.delivery.ui.viewmodels.QarBaseViewModel
 import kz.atasuai.delivery.ui.viewmodels.profile.ProfileViewModel
 import kz.atasuai.market.models.LanguageModel
 
@@ -147,6 +150,9 @@ fun ProfileCard(
     }
     VSpacerHi(2f)
     Row(modifier = Modifier.fillMaxWidth()
+        .noRippleClickable {
+            QarBaseViewModel.Navigator.navigate(context, ActivityList.SupportActivity)
+        }
         .wrapContentHeight()
         .background(color = AtasuaiTheme.colors.profileCardCo,shape = RoundedCornerShape(topStart = 0.dp, topEnd = 0.dp, bottomStart = 20.dp, bottomEnd = 20.dp))
         .padding(horizontal = 20.dp, vertical = 13.5.dp),

@@ -2,6 +2,9 @@ package kz.atasuai.delivery.ui.viewmodels.home
 
 import android.content.Context
 import android.net.Uri
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -9,6 +12,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kz.atasuai.delivery.common.APIHelper
+import kz.atasuai.delivery.common.ButtonStatus
 import kz.atasuai.delivery.common.navigtion.ActivityList
 import kz.atasuai.delivery.ui.viewmodels.QarBaseViewModel
 
@@ -20,6 +24,21 @@ class ScanQRViewModel : QarBaseViewModel() {
     }
     private val _scanResult = MutableStateFlow<String?>(null)
     val scanResult: StateFlow<String?> = _scanResult.asStateFlow()
+    var codeBtnStatus by mutableStateOf(ButtonStatus.Disabled)
+        private set
+
+    private val _cargoCode = MutableStateFlow("")
+    val cargoCode: StateFlow<String> = _cargoCode.asStateFlow()
+    fun updateCode(value: String){
+        _cargoCode.value = value
+        if(_cargoCode.value.isNotEmpty()){
+            codeBtnStatus = ButtonStatus.Enabled
+        }else{
+            codeBtnStatus = ButtonStatus.Disabled
+        }
+    }
+
+
 
     private val _isScanning = MutableStateFlow(true)
     val isScanning: StateFlow<Boolean> = _isScanning.asStateFlow()
@@ -39,6 +58,7 @@ class ScanQRViewModel : QarBaseViewModel() {
     fun onConfirmLogin(value:Boolean) {
         _confirmLogin.value = value
     }
+
     var token = MutableStateFlow<String>("")
 
     fun onQRCodeScanned(result: String) {

@@ -1,4 +1,4 @@
-package kz.atasuai.delivery.ui.components.home
+package kz.atasuai.delivery.ui.components.global
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -21,7 +21,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kz.atasuai.delivery.R
 import kz.atasuai.delivery.common.Translator.T
-import kz.atasuai.delivery.ui.components.global.noRippleClickable
 import kz.atasuai.delivery.ui.theme.AtasuaiColors.PrimaryColor
 import kz.atasuai.delivery.ui.theme.AtasuaiTheme
 import kz.atasuai.delivery.ui.theme.CargoPlaceStyle
@@ -32,12 +31,12 @@ import kz.atasuai.market.models.LanguageModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchTextFiled(
+    modifier: Modifier = Modifier,
     text: String,
     onTextChange: (String) -> Unit,
     placeholderText: String,
     currentLanguage: LanguageModel,
     isError: Boolean = false,
-    modifier: Modifier = Modifier,
     onChange:()->Unit,
 ) {
     var textState by remember { mutableStateOf(text) }
@@ -49,13 +48,6 @@ fun SearchTextFiled(
         fontWeight = FontWeight(400),
         color = AtasuaiTheme.colors.textPrimary,
     )
-    val pleceholder = TextStyle(
-                        fontSize = 14.sp,
-                        lineHeight = 16.8.sp,
-                        fontFamily = PrimaryFontFamily,
-                        fontWeight = FontWeight(400),
-                        color = Color(0xFFAEAEAE),
-                    )
     TextField(
         value = textState,
         onValueChange = { input ->
@@ -67,7 +59,7 @@ fun SearchTextFiled(
         placeholder = {
             Text(
                 text = T(placeholderText, currentLanguage),
-                style = pleceholder
+                style = MaterialTheme.typography.CargoPlaceStyle
             )
         },
         textStyle = textStyle,
@@ -122,7 +114,7 @@ fun SearchTextFiled(
             Icon(
                 painter = painterResource(id = R.drawable.search_icon),
                 contentDescription = "clear",
-                tint = Color(0xFFAEAEAE),
+                tint = PrimaryColor,
                 modifier = Modifier
                     .size(24.dp)
                     .noRippleClickable {

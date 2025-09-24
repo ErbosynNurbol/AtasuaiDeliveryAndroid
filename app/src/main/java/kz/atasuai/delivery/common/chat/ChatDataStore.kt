@@ -18,13 +18,11 @@ data class SerializableChatMessage(
 )
 
 class ChatDataStore(private val dataStore: DataStore<Preferences>) {
-
     companion object {
         private val CHAT_MESSAGES_KEY = stringPreferencesKey("chat_messages")
         private const val RETENTION_DAYS = 7L
         private const val MAX_MESSAGES = 100
     }
-
     private val json = Json { ignoreUnknownKeys = true }
 
     suspend fun saveMessage(message: ChatMessage) {
