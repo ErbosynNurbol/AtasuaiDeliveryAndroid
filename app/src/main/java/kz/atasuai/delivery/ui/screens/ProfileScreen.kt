@@ -45,6 +45,9 @@ fun ProfileScreen(
                 VSpacerHi(16f)
                 ProfileCard(currentLanguage,context,viewModel)
             }
+            item{
+                VSpacerHi(16f)
+            }
         }
 
     }

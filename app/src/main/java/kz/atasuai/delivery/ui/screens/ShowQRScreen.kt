@@ -291,7 +291,7 @@ fun ScanQRModal(
                            horizontalAlignment = Alignment.CenterHorizontally,
                            verticalArrangement = Arrangement.Bottom
                        ){
-                           if (isScanning) {
+                           if (isScanning && cameraPermission.status.isGranted) {
                                ScanOverlayWithCorners()
                            }
                        }
@@ -300,7 +300,7 @@ fun ScanQRModal(
                            verticalArrangement = Arrangement.Center
                        ){
                            if(!confirmLogin){
-                               if(isScanning){
+                               if(isScanning && cameraPermission.status.isGranted){
                                    Row(modifier = Modifier.fillMaxWidth(),
                                        horizontalArrangement = Arrangement.Center
                                    ){

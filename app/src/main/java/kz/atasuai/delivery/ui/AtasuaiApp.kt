@@ -187,7 +187,7 @@ class AtasuaiApp: Application(){
         OnlineMode.initialize(this)
         appContext = applicationContext
         prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        siteUrl = "https://pos.3100.kz/api"
+        siteUrl = "https://api.atasuai.com/api"
         themeManager = ThemeManager(this)
         initializeLanguage()
         loadTranslator()
