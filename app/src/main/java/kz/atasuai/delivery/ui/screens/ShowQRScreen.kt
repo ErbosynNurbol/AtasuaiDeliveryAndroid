@@ -418,9 +418,10 @@ fun ScanQRModal(
 fun ShowScanQR(viewModel: ScanQRViewModel,darkTheme:Boolean,currentLanguage:LanguageModel){
     val isScanQR by viewModel.isScanQR.collectAsState()
     var qrResult by remember { mutableStateOf<QRResult?>(null) }
+    val currentPerson by AtasuaiApp.currentPerson.collectAsState()
     LaunchedEffect(Unit) {
-        AtasuaiApp.currentPerson?.personId.let{
-            qrResult = QRGenerator.generateQR("${AtasuaiApp.currentPerson?.personId}")
+        currentPerson.personId.let{
+            qrResult = QRGenerator.generateQR(currentPerson.personId)
         }
     }
     Column(

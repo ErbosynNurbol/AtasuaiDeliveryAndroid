@@ -9,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import kz.atasuai.delivery.common.Translator
 import kz.atasuai.delivery.ui.AtasuaiApp
 import kz.atasuai.delivery.ui.activities.welcome.LoginActivity
+import kz.atasuai.market.models.global.PersonModel
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +42,7 @@ class SplashActivity : AppCompatActivity() {
     private fun proceedToNextScreen() {
         val nextActivity = when {
             AtasuaiApp.isFirstLaunch -> LoginActivity::class.java
-            AtasuaiApp.currentPerson == null -> LoginActivity::class.java
+            AtasuaiApp.currentPerson.value == PersonModel() -> LoginActivity::class.java
             else -> MainActivity::class.java
         }
         startActivity(Intent(this, nextActivity))

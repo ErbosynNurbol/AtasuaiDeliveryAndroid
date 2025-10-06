@@ -90,8 +90,8 @@ class AtasuaiApp: Application(){
             _isFirstRegis.value = value
         }
 
-        var currentPerson: PersonModel? = null
-            private set
+        private val _currentPerson = MutableStateFlow(PersonModel())
+        val currentPerson: StateFlow<PersonModel> = _currentPerson.asStateFlow()
 //        eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJQZXJzb25JZCI6IjkiLCJTdG9yZUlkIjoiMSIsIk5hbWUiOiIiLCJTdXJOYW1lIjoiIiwiQXZhdGFyVXJsIjoiaHR0cHM6Ly9wb3MuMzEwMC5rei9pbWFnZXMvZGVmYXVsdF9hdmF0YXIucG5nIiwiUGhvbmUiOiIrNzc3MTMzNDUyNTUiLCJIYXNQYXNzd29yZCI6IkZhbHNlIiwiQmlydGhkYXkiOiIiLCJuYmYiOjE3NTM3OTI0MjUsImV4cCI6MTc4NTMyODQyNSwiaWF0IjoxNzUzNzkyNDI1LCJpc3MiOiJzaG9wLnFhci5reiIsImF1ZCI6InNob3AucWFyLmt6In0.G3Ij-Sz89bNRC9XLbokAoNDPAtzT_iKkbMCq6MRxGpE
         var currentToken: String = ""
             private set
@@ -128,10 +128,10 @@ class AtasuaiApp: Application(){
             currentToken = token.ifEmpty {
                 ""
             }
-            currentPerson = if (token.isNotEmpty()) {
-                TokenHelper.decode(token)
+            _currentPerson.value = if (token.isNotEmpty()) {
+                TokenHelper.decode(token) ?: PersonModel()
             } else {
-                null
+                PersonModel()
             }
             prefs.edit().putString(QAR_TOKEN_KEY, token).apply()
         }
